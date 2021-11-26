@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -31,10 +34,20 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() {
+  Future<void> _incrementCounter() async {
+    compute(child, 1).then((result) {
+      print(result);
+    });
+    print("main end");
+
     setState(() {
       _counter++;
     });
+  }
+
+  static int child(int input) {
+    sleep(Duration(seconds: 10));
+    return input;
   }
 
   @override
